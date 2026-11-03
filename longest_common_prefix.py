@@ -1,18 +1,18 @@
 class Solution(object):
     def longestCommonPrefix(self, strs):
         shortest_str = strs[0]
-        for i in strs[1:]:
+        for i in strs:
             if len(i) < len(shortest_str):
                 shortest_str = i
 
         longest_prefix = ""
-        for i in range(1, len(shortest_str) + 1):
-            test_prefix = shortest_str[:i]
+        for i in range(len(shortest_str)):
+            next_char = shortest_str[i]
             for j in strs:
-                if j[:i] != test_prefix:
+                if j[i] != next_char:
                     break
             else:
-                longest_prefix = test_prefix
+                longest_prefix += next_char
                 continue
             break
 
